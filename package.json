@@ -1,0 +1,22 @@
+{
+  "name": "typescript-ebg",
+  "version": "1.0.0",
+  "description": "typescript version of Mark Hill and Alden Thorpe's EBG site",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Mark-David-Hill/typeScript-ebg.git"
+  },
+  "author": "Mark Hill, Alden Thorpe",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Mark-David-Hill/typeScript-ebg/issues"
+  },
+  "homepage": "https://github.com/Mark-David-Hill/typeScript-ebg#readme",
+  "dependencies": {
+    "typescript": "^5.0.4"
+  }
+}
