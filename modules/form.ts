@@ -2,9 +2,9 @@
 // Form Submission
 // 
 
-const formSubmitSetup = (curPage, newPage, items) => {
+const formSubmitSetup = (curPage: string, newPage: string, items: [[string, string],[string, string],[string, string],[string, string]]) => {
     // grab reference to form
-    const formElem = document.querySelector('form');
+    const formElem: HTMLFormElement = document.querySelector('form')!;
 
     // submit handler
     formElem.addEventListener('submit', (e) => {
@@ -20,21 +20,23 @@ const formSubmitSetup = (curPage, newPage, items) => {
         console.log('formdata fired');
 
         // Get the form data from the event object
-        let newFormData = e.formData;
+        let newFormData: FormData = e.formData;
         for (let value of newFormData.values()) {
             console.log(value);
         };
 
-        //Save character data to local storage.
-        for (let i = 0; i < items.length; i++) {
-            const saveName = items[i][0];
-            const formItemName = items[i][1];
-            localStorage.setItem(saveName, newFormData.get(formItemName))
-        }
+        // let formInfo: string = String(newFormData.get(formItemName))
 
-        // Change page
-        const url = window.location.href.replace(curPage, newPage);
-        window.location.href = url;
+        // //Save character data to local storage.
+        // for (let i = 0; i < items.length; i++) {
+        //     const saveName = items[i][0];
+        //     const formItemName = items[i][1];
+        //     localStorage.setItem(saveName, formInfo)
+        // }
+
+        // // Change page
+        // const url = window.location.href.replace(curPage, newPage);
+        // window.location.href = url;
     });
 }
 

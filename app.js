@@ -15,3 +15,4 @@ const formSetup = function () {
     formSubmit("character.html", "charPage.html", items);
 };
 formSetup();
+formSubmit();

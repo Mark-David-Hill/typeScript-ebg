@@ -18,3 +18,4 @@ const formSetup = function() {
 }
 
 formSetup();
+formSubmit();
