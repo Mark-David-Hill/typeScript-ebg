@@ -1,4 +1,4 @@
-const formSubmit = require('./modules/form.ts');
+import { formSubmitSetup } from './modules/form'
 
 // // 
 // // Form Submission
@@ -14,8 +14,7 @@ const formSetup = function() {
   ]
 
   // Set up form submission
-  formSubmit("character.html", "charPage.html", items);
+  formSubmitSetup("character.html", "charPage.html", items);
 }
 
 formSetup();
-formSubmit();

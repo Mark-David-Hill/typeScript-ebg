@@ -1,5 +1,6 @@
 "use strict";
-const formSubmit = require('./modules/form.ts');
+Object.defineProperty(exports, "__esModule", { value: true });
+const form_1 = require("./modules/form");
 // // 
 // // Form Submission
 // // 
@@ -12,7 +13,6 @@ const formSetup = function () {
         ["characterElement", "elementGroup"],
     ];
     // Set up form submission
-    formSubmit("character.html", "charPage.html", items);
+    (0, form_1.formSubmitSetup)("character.html", "charPage.html", items);
 };
 formSetup();
-formSubmit();

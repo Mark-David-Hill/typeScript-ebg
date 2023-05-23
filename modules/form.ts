@@ -2,7 +2,7 @@
 // Form Submission
 // 
 
-const formSubmitSetup = (curPage: string, newPage: string, items: [[string, string],[string, string],[string, string],[string, string]]) => {
+const formSubmitSetup = (curPage: string, newPage: string, items: string[][]) => {
     // grab reference to form
     const formElem: HTMLFormElement = document.querySelector('form')!;
 
@@ -40,4 +40,4 @@ const formSubmitSetup = (curPage: string, newPage: string, items: [[string, stri
     });
 }
 
-export default formSubmitSetup
+export { formSubmitSetup };
