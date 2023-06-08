@@ -1,5 +1,5 @@
 // Display 
-const display = (target, ...contents) => {
+const display = (target: HTMLElement, ...contents: [string | number]) => {
     let content = "";
     contents.forEach(el => {
         content += el;
