@@ -1,8 +1,24 @@
 {
-  "dependencies": {
-    "typescript": "^5.0.4"
-  },
   "devDependencies": {
-    "@types/node": "^20.2.3"
-  }
+    "@types/node": "^20.2.3",
+    "esmodules-dev-server": "^0.0.4",
+    "typescript": "^5.1.3"
+  },
+  "name": "typescript-ebg",
+  "version": "1.0.0",
+  "main": "app.js",
+  "scripts": {
+    "serve": "node node_modules/esmodules-dev-server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Mark-David-Hill/typeScript-ebg.git"
+  },
+  "author": "Mark Hill",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Mark-David-Hill/typeScript-ebg/issues"
+  },
+  "homepage": "https://github.com/Mark-David-Hill/typeScript-ebg#readme",
+  "description": ""
 }
