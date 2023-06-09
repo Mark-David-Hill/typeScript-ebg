@@ -2,7 +2,9 @@
 // Display Weapons
 // 
 
-const displayWeapons = (gameData, classIndex, getEl, display) => {
+import GameData from "./util/gameData";
+
+const displayWeapons = (gameData: GameData, classIndex: number, getEl: Function, display: Function) => {
     const rWeaponEl = getEl('archWeapons');
     const mWeaponEl = getEl('meleeWeapon');
     // Only display ranged weapon if Archer was chosen
