@@ -3,7 +3,7 @@
 // 
 
 // Return the class index based on class name
-const getClassIndex = className => {
+const getClassIndex = (className: string): number | undefined => {
     switch (className) {
         case 'archer':
             return 0
@@ -17,7 +17,7 @@ const getClassIndex = className => {
 }
 
 // Return the race index based on race name
-const getRaceIndex = raceName => {
+const getRaceIndex = (raceName: string): number | undefined => {
     switch (raceName) {
         case 'aven':
             return 0
@@ -33,7 +33,7 @@ const getRaceIndex = raceName => {
 }
 
 // Return the element index based on element name
-const getElementIndex = elementName => {
+const getElementIndex = (elementName: string): number | undefined => {
     switch (elementName) {
         case 'air':
             return 0
