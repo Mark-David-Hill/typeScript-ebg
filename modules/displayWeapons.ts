@@ -2,7 +2,7 @@
 // Display Weapons
 // 
 
-import GameData from "./util/gameData";
+import GameData from "./util/GameData";
 
 const displayWeapons = (gameData: GameData, classIndex: number, getEl: Function, display: Function) => {
     const rWeaponEl = getEl('archWeapons');
