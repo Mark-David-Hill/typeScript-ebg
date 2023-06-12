@@ -2,9 +2,11 @@
 // Get Soul Forces
 // 
 
+import GameData from "./util/GameData";
+
 // Get Class Soul Force
 
-const getCsf = (gameData, classIndex) => {
+const getCsf = (gameData: GameData, classIndex: number) => {
     let name = gameData.classSoulForces[classIndex].name;
     let desc = gameData.classSoulForces[classIndex].description;
     let csf = [name, desc];
@@ -13,7 +15,7 @@ const getCsf = (gameData, classIndex) => {
 
 // Get Race Soul Force
 
-const getRsf = (gameData, raceIndex) => {
+const getRsf = (gameData: GameData, raceIndex: number) => {
     let name = gameData.raceSoulForces[raceIndex].name;
     let desc = gameData.raceSoulForces[raceIndex].description;
     let rsf = [name, desc];
