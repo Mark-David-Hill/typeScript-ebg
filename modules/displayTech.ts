@@ -2,20 +2,16 @@
 // import getEl from "./getEl.js"
 // import display from "./display.js"
 
+import GameData from "./util/GameData";
+import Technique from "./util/Technique";
+
 // 
 // Display Techniques
 // 
 
 // Display the techniques of the specified class
-const techDisplay = (gameData, classIndex, elementIndex, capitalize, getEl, display) => {
-    let classTech
-    // Set for specific element index if Magician.
-    if (classIndex === 2) {
-        classTech = gameData.techniques[classIndex][elementIndex];
-    }
-    else {
-        classTech = gameData.techniques[classIndex];
-    }
+const techDisplay = (gameData: GameData, classIndex: number, elementIndex: number, techIndex: number, capitalize: Function, getEl: Function, display: Function) => {
+    let classTech: Technique[] = gameData.techniques[techIndex];
 
     console.log('class tech: ');
     console.log(classTech);

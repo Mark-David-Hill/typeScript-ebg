@@ -12,7 +12,7 @@ interface GameData {
   charClasses: string[];
   baseStats: number[][];
   startWeapons: string[];
-  techniques: Technique[][] | Technique[][][];
+  techniques: Technique[][];
   raceSoulForces: SoulForce[];
   classSoulForces: SoulForce[];
   weapons: [][];
