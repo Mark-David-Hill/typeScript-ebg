@@ -46,4 +46,30 @@ const getElementIndex = (elementName: string): number | undefined => {
     }
 }
 
-export { getClassIndex, getRaceIndex, getElementIndex }
+// Return the Techniques index based on class and element
+const getClassTechIndex = (className: string, elementName: string): number | undefined => {
+    if (className === 'wizard') {
+        switch (elementName) {
+            case 'air':
+                return 2
+            case 'earth':
+                return 3
+            case 'fire':
+                return 4
+            case 'water':
+                return 5
+        }
+    }
+    else {
+        switch (className) {
+            case 'archer':
+                return 0
+            case 'cleric':
+                return 1
+            case 'warrior':
+                return 6
+        }
+    }
+}
+
+export { getClassIndex, getRaceIndex, getElementIndex, getClassTechIndex }
