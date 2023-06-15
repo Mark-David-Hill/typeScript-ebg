@@ -1,6 +1,7 @@
 // Get JSON Data
 
-const getData = (fileName: string, endFunction: (arg0: object, arg1: [string]) => void, localData: [string]) => {
+const getData = (fileName: string, endFunction: Function, localData: string[]) => {
+// const getData = (fileName: string, endFunction: (arg0: object, arg1: string[]) => void, localData: string[]) => {
     
     let data;
     // Get data from JSON file.

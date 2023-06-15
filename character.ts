@@ -2,40 +2,42 @@ import { getData, capitalize, display, getEl} from './modules/util/util.js'
 import { getClassIndex, getRaceIndex, getElementIndex } from './modules/getIndex.js'
 import { getClassStats, getRaceStats, getCombinedStats } from './modules/getStats.js'
 import formSubmit from './modules/form.js'
+import GameData from './modules/util/GameData.js';
 // import { getCsf, getRsf } from './modules/getSf.js'
 
 // Stats = [hp, tp, str, int, agi]
 
-let gameData;
+let gameData: GameData;
 
 // 
 // Retrieve Local Storage
 // 
 
 window.addEventListener("DOMContentLoaded", function(e) {
-    let charName = localStorage.getItem("characterName");
-    let charClass = localStorage.getItem("characterClass");
-    let charRace = localStorage.getItem("characterRace");
-    let charElement = localStorage.getItem("characterElement");
-  
-    let charChoices = [charName, charClass, charRace, charElement];
+    let charName: string | null = localStorage.getItem("characterName");
+    let charClass: string | null = localStorage.getItem("characterClass");
+    let charRace: string | null = localStorage.getItem("characterRace");
+    let charElement: string | null = localStorage.getItem("characterElement");
+
+    if(charName && charClass && charRace && charElement) {
+        let charChoices: string[] = [charName, charClass, charRace, charElement];
+        console.log(charName);
+        console.log(charClass);
+        console.log(charRace);
+        console.log(charElement);
     
-    console.log(charName);
-    console.log(charClass);
-    console.log(charRace);
-    console.log(charElement);
-  
-    // Begins the process of requesting the JSON data.
-    getData('gameData.json', onLoad, charChoices)
+        // Begins the process of requesting the JSON data.
+        getData('gameData.json', onLoad, charChoices)
+    }    
   })
   
   // Runs when data loads from JSON file
-  function onLoad(data, charChoices) {
+  function onLoad(data: GameData, charChoices: string[]) {
     gameData = data;
     console.log('charChoices: ')
     console.log(charChoices);
 
-    let nameField = document.getElementById('nameField');
+    let nameField: HTMLInputElement = <HTMLInputElement> document.getElementById('nameField');
 
     // Initially set chart data only if input data is already there (checks name field)
     if (nameField.value.length !== 0) {
@@ -181,7 +183,7 @@ let getStatHigh = function(gameData, statIndex) {
 }
 
 // Calculate and return the highest possible starting stat values
-let getStatHighs = function(gameData) {
+let getStatHighs = function(gameData: GameData) {
     if(gameData) {
         // Make array of the highest possible starting stat values
         let highStats = Array.of(getStatHigh(gameData, 0), getStatHigh(gameData, 1), getStatHigh(gameData, 2), getStatHigh(gameData, 3), getStatHigh(gameData, 4));
@@ -197,7 +199,7 @@ let getStatHighs = function(gameData) {
 // 
 
 //  Calculate the stat percent for a single stat (for a specified class)
-let getStatPercent = function(gameData, classIndex, statIndex) {
+let getStatPercent = function(gameData: GameData, classIndex: number, statIndex: number) {
     if(gameData) {
         let classStat = gameData.baseStats[classIndex][statIndex];
         let statHigh = getStatHigh(gameData, statIndex);
