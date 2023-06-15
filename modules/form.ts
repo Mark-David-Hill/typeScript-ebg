@@ -25,19 +25,20 @@ const formSubmitSetup = (curPage: string, newPage: string, items: string[][]) =>
             console.log(value);
         };
 
-        // let formInfo: string = String(newFormData.get(formItemName))
+        //Save character data to local storage.
+        for (let i = 0; i < items.length; i++) {
+            const saveName = items[i][0];
+            const formItemName = items[i][1];
+            const itemNameValue: FormDataEntryValue | null = newFormData.get(formItemName);
+            if (typeof itemNameValue === 'string') {
+                localStorage.setItem(saveName, itemNameValue)
+            }
+        }
 
-        // //Save character data to local storage.
-        // for (let i = 0; i < items.length; i++) {
-        //     const saveName = items[i][0];
-        //     const formItemName = items[i][1];
-        //     localStorage.setItem(saveName, formInfo)
-        // }
-
-        // // Change page
-        // const url = window.location.href.replace(curPage, newPage);
-        // window.location.href = url;
+        // Change page
+        const url = window.location.href.replace(curPage, newPage);
+        window.location.href = url;
     });
 }
 
-export { formSubmitSetup };
+export default formSubmitSetup
