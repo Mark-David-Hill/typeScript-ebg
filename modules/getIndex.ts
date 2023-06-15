@@ -17,7 +17,7 @@ const getClassIndex = (className: string): number | undefined => {
 }
 
 // Return the race index based on race name
-const getRaceIndex = (raceName: string): number | undefined => {
+const getRaceIndex = (raceName: string): number => {
     switch (raceName) {
         case 'aven':
             return 0
@@ -29,6 +29,8 @@ const getRaceIndex = (raceName: string): number | undefined => {
             return 3
         case 'silmaeri':
             return 4
+        default:
+            return 0
     }
 }
 

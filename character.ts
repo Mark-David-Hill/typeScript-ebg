@@ -155,7 +155,7 @@ const myChart = new Chart(
 // 
 
 // Calculate combined stat high for a specific stat.
-let getStatHigh = function(gameData, statIndex) {
+let getStatHigh = function(gameData: GameData, statIndex: number) {
     if (gameData) {
         let baseStats = gameData.baseStats;
         let statMods = gameData.statMods;
@@ -212,7 +212,7 @@ let getStatPercent = function(gameData: GameData, classIndex: number, statIndex:
 }
 
 // Calculate all the stat percentages for a specified character class
-let getClassStatPercents = function(gameData, classIndex) {
+let getClassStatPercents = function(gameData: GameData, classIndex: number) {
     if(gameData) {
         // Make array of the stat percentages of the current class
         let classStatPercents = Array.of(getStatPercent(gameData, classIndex, 0), getStatPercent(gameData, classIndex, 1), getStatPercent(gameData, classIndex, 2), getStatPercent(gameData, classIndex, 3), getStatPercent(gameData, classIndex, 4));
@@ -224,7 +224,7 @@ let getClassStatPercents = function(gameData, classIndex) {
 }
 
 //  Calculate the combined base stat and stat mod percent for a single stat (for a specified class and race)
-let getCombinedPercent = function(gameData, classIndex, raceIndex, statIndex) {
+let getCombinedPercent = function(gameData: GameData, classIndex: number, raceIndex: number, statIndex: number) {
     if(gameData) {
         let classStat = gameData.baseStats[classIndex][statIndex];
         let raceMod = gameData.statMods[raceIndex][statIndex]
@@ -239,7 +239,7 @@ let getCombinedPercent = function(gameData, classIndex, raceIndex, statIndex) {
 }
 
 // Create an array of the percents for class base stat + race stat mod.
-let getCombinedPercents = function(gameData, classIndex, raceIndex) {
+let getCombinedPercents = function(gameData: GameData, classIndex: number, raceIndex: number) {
     if(gameData) {
         // Make array of the stat percentages of the current class
         let combinedPercents = Array.of(getCombinedPercent(gameData, classIndex, raceIndex, 0), getCombinedPercent(gameData, classIndex, raceIndex, 1), getCombinedPercent(gameData, classIndex, raceIndex, 2), getCombinedPercent(gameData, classIndex, raceIndex, 3), getCombinedPercent(gameData, classIndex, raceIndex, 4));
@@ -256,7 +256,7 @@ let getCombinedPercents = function(gameData, classIndex, raceIndex) {
 // 
 
 // Check for current selection based on which radio button has been checked (for specified group).
-let choiceCheck = function(groupName) {
+let choiceCheck = function(groupName: string) {
     let radios = document.getElementsByName(groupName);
     for( let i = 0; i < radios.length; i++ ) {
         if( radios[i].checked ) {
@@ -334,9 +334,9 @@ let setChartData = function(gameData, classChoice, raceChoice) {
             }
         }
         else if(raceChoice) {
-            let raceIndex = getRaceIndex(raceChoice);
+            let raceIndex: number = getRaceIndex(raceChoice);
             let statMods = gameData.statMods[raceIndex];
-            const combinedTotal = statMods.map(num => num + 10);
+            const combinedTotal = statMods.map((num: number) => num + 10);
             updateStats(null, null, combinedTotal);
             updateStatsDisplay(gameData, null, raceIndex);
         }
@@ -349,7 +349,7 @@ let setChartData = function(gameData, classChoice, raceChoice) {
 }
 
 // Update Graph Stats
-let updateStats = function (classStats, combinedStats, raceStats) {
+let updateStats = function (classStats: number[], combinedStats: number[], raceStats: number[]) {
     radarData.datasets[0].data = classStats;
     if(combinedStats) {
         radarData.datasets[1].data = combinedStats;
@@ -362,7 +362,7 @@ let updateStats = function (classStats, combinedStats, raceStats) {
     myChart.update();
 }
 
-let updateStatsDisplay = function(gameData, classIndex, raceIndex) {
+let updateStatsDisplay = function(gameData: GameData, classIndex: number, raceIndex: number) {
     if(gameData) {
         let classStats = [];
         let raceStats = [];
@@ -380,7 +380,7 @@ let updateStatsDisplay = function(gameData, classIndex, raceIndex) {
         else {
             raceStats = [0,0,0,0,0]
         }
-        let statsDisplay = document.getElementById('statsDisplay');
+        let statsDisplay: HTMLElement = document.getElementById('statsDisplay')!;
         statsDisplay.innerHTML = `<strong>Max HP</strong>: 
         <span class="text-danger">${classStats[0]}</span> + 
         <span class="text-primary">${raceStats[0]}</span>, <strong>Max TP</strong>: 
