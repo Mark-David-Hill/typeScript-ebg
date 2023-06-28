@@ -155,7 +155,8 @@ const myChart = new Chart(
 // 
 
 // Calculate combined stat high for a specific stat.
-let getStatHigh = function(gameData: GameData, statIndex: number) {
+let getStatHigh = function(gameData: GameData, statIndex: number): number {
+    let statHigh = 0;
     if (gameData) {
         let baseStats = gameData.baseStats;
         let statMods = gameData.statMods;
@@ -173,12 +174,13 @@ let getStatHigh = function(gameData: GameData, statIndex: number) {
         let maxClassStat = Math.max(...classStats);
         let maxRaceStat = Math.max(...raceStats);
 
-        let statHigh = maxClassStat + maxRaceStat;
+        statHigh = maxClassStat + maxRaceStat;
 
         return statHigh;
     }
     else {
         console.log('Error- Game Data is not loaded.')
+        return statHigh;
     }
 }
 
