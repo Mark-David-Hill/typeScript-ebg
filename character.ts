@@ -309,14 +309,14 @@ let radioButtons = [archBtn, clerBtn, magBtn, warBtn, avenBtn, brekenBtn, kyrekB
 
 // Add click event to radio buttons
 for (let i = 0; i < radioButtons.length; i++) {
-    radioButtons[i].addEventListener("click", onRadioChoice);
+    radioButtons[i]!.addEventListener("click", onRadioChoice);
 }
 
 // 
 // Set chart data for class + race
 // 
 
-let setChartData = function(gameData, classChoice, raceChoice) {
+let setChartData = function(gameData: GameData, classChoice: string, raceChoice: string) {
     if (gameData) {
         if(classChoice) {
             let classIndex = getClassIndex(classChoice);
