@@ -3,7 +3,7 @@
 // 
 
 // Return the class index based on class name
-const getClassIndex = (className: string): number | undefined => {
+const getClassIndex = (className: string): number => {
     switch (className) {
         case 'archer':
             return 0
@@ -13,6 +13,8 @@ const getClassIndex = (className: string): number | undefined => {
             return 2
         case 'warrior':
             return 3
+        default:
+            return 0
     }
 }
 
@@ -35,7 +37,7 @@ const getRaceIndex = (raceName: string): number => {
 }
 
 // Return the element index based on element name
-const getElementIndex = (elementName: string): number | undefined => {
+const getElementIndex = (elementName: string): number => {
     switch (elementName) {
         case 'air':
             return 0
@@ -45,11 +47,13 @@ const getElementIndex = (elementName: string): number | undefined => {
             return 2
         case 'water':
             return 3
+        default:
+            return 0
     }
 }
 
 // Return the Techniques index based on class and element
-const getClassTechIndex = (className: string, elementName: string): number | undefined => {
+const getClassTechIndex = (className: string, elementName: string): number => {
     if (className === 'wizard') {
         switch (elementName) {
             case 'air':
@@ -60,6 +64,8 @@ const getClassTechIndex = (className: string, elementName: string): number | und
                 return 4
             case 'water':
                 return 5
+            default:
+                return 0
         }
     }
     else {
@@ -70,6 +76,8 @@ const getClassTechIndex = (className: string, elementName: string): number | und
                 return 1
             case 'warrior':
                 return 6
+            default:
+                return 0
         }
     }
 }
