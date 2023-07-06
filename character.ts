@@ -258,28 +258,31 @@ let getCombinedPercents = function(gameData: GameData, classIndex: number, raceI
 // 
 
 // Check for current selection based on which radio button has been checked (for specified group).
-let choiceCheck = function(groupName: string) {
+let choiceCheck = function(groupName: string): string {
     let radios = document.getElementsByName(groupName);
+    let choice = 'default';
     for( let i = 0; i < radios.length; i++ ) {
         const currentChoice = radios[i] as HTMLInputElement;
         if( currentChoice.checked ) {
-            return currentChoice.value;
+            // return currentChoice.value;
+            choice = currentChoice.value;
         }
     }
+    return choice;
 }
 
 // Check for currently selected class
-let checkClass = function() {
-    return choiceCheck('classGroup');
+let checkClass = function(): string {
+    return choiceCheck('classGroup')
 }
 
 // Check for currently selected race
-let checkRace = function() {
+let checkRace = function(): string {
     return choiceCheck('raceGroup');
 }
 
 // Check for currently selected element
-let checkElement = function() {
+let checkElement = function(): string {
     return choiceCheck('elementGroup');
 }
 
