@@ -261,8 +261,9 @@ let getCombinedPercents = function(gameData: GameData, classIndex: number, raceI
 let choiceCheck = function(groupName: string) {
     let radios = document.getElementsByName(groupName);
     for( let i = 0; i < radios.length; i++ ) {
-        if( radios[i].checked ) {
-            return radios[i].value;
+        const currentChoice = radios[i] as HTMLInputElement;
+        if( currentChoice.checked ) {
+            return currentChoice.value;
         }
     }
 }
