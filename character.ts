@@ -355,8 +355,11 @@ let setChartData = function(gameData: GameData, classChoice: string, raceChoice:
 }
 
 // Update Graph Stats
-let updateStats = function (classStats: number[], combinedStats: number[], raceStats: number[]) {
-    radarData.datasets[0].data = classStats;
+let updateStats = function (classStats: number[] | null, combinedStats?: number[] | null, raceStats?: number[]) {
+    if (classStats) {
+        radarData.datasets[0].data = classStats;
+    }
+    
     if(combinedStats) {
         radarData.datasets[1].data = combinedStats;
     }
@@ -368,7 +371,7 @@ let updateStats = function (classStats: number[], combinedStats: number[], raceS
     myChart.update();
 }
 
-let updateStatsDisplay = function(gameData: GameData, classIndex: number, raceIndex: number) {
+let updateStatsDisplay = function(gameData: GameData, classIndex: number | null, raceIndex: number | null) {
     if(gameData) {
         let classStats = [];
         let raceStats = [];
