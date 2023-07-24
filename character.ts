@@ -9,6 +9,8 @@ import GameData from './modules/util/GameData.js';
 
 let gameData: GameData;
 
+type classDataType = number[] | undefined;
+
 // 
 // Retrieve Local Storage
 // 
@@ -83,7 +85,7 @@ const radarData = {
     ],
     datasets: [{
         label: 'Class Stats',
-        data: [10, 10, 10, 10, 10],
+        data: [10, 10, 10, 10, undefined],
         fill: true,
         backgroundColor: 'rgba(255, 99, 132, 0.2)',
         borderColor: 'rgb(255, 99, 132)',
@@ -201,28 +203,33 @@ let getStatHighs = function(gameData: GameData) {
 // 
 
 //  Calculate the stat percent for a single stat (for a specified class)
-let getStatPercent = function(gameData: GameData, classIndex: number, statIndex: number) {
+let getStatPercent = function(gameData: GameData, classIndex: number, statIndex: number): number | undefined {
+    let statPercent = undefined;
     if(gameData) {
         let classStat = gameData.baseStats[classIndex][statIndex];
         let statHigh = getStatHigh(gameData, statIndex);
-        let statPercent = (classStat / statHigh) * 100;
-        return statPercent;
+        statPercent = (classStat / statHigh) * 100;
     }
     else {
         console.log('Error- Game Data is not loaded.')
     }
+    return statPercent;
 }
 
 // Calculate all the stat percentages for a specified character class
-let getClassStatPercents = function(gameData: GameData, classIndex: number) {
+let getClassStatPercents = function(gameData: GameData, classIndex: number): (number | undefined)[] {
+    let classStatPercents: (number | undefined)[] = [undefined]
     if(gameData) {
         // Make array of the stat percentages of the current class
-        let classStatPercents = Array.of(getStatPercent(gameData, classIndex, 0), getStatPercent(gameData, classIndex, 1), getStatPercent(gameData, classIndex, 2), getStatPercent(gameData, classIndex, 3), getStatPercent(gameData, classIndex, 4));
-        return classStatPercents;
+        let testArray = Array.of(getStatPercent(gameData, classIndex, 0), getStatPercent(gameData, classIndex, 1), getStatPercent(gameData, classIndex, 2), getStatPercent(gameData, classIndex, 3), getStatPercent(gameData, classIndex, 4));
+        if (testArray) {
+            classStatPercents = testArray;
+        }
     }
     else {
         console.log('Error- Game Data is not loaded.')
     }
+    return classStatPercents;
 }
 
 //  Calculate the combined base stat and stat mod percent for a single stat (for a specified class and race)
@@ -343,7 +350,7 @@ let setChartData = function(gameData: GameData, classChoice: string, raceChoice:
             let raceIndex: number = getRaceIndex(raceChoice);
             let statMods = gameData.statMods[raceIndex];
             const combinedTotal = statMods.map((num: number) => num + 10);
-            updateStats(null, null, combinedTotal);
+            updateStats([], [undefined], combinedTotal);
             updateStatsDisplay(gameData, null, raceIndex);
         }
         
@@ -355,7 +362,7 @@ let setChartData = function(gameData: GameData, classChoice: string, raceChoice:
 }
 
 // Update Graph Stats
-let updateStats = function (classStats: number[] | null, combinedStats?: number[] | null, raceStats?: number[]) {
+let updateStats = function (classStats: (number | undefined)[], combinedStats?: (number | undefined)[], raceStats?: number[]) {
     if (classStats) {
         radarData.datasets[0].data = classStats;
     }
